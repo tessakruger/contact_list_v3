@@ -1,7 +1,7 @@
 require 'byebug'
 require 'csv'
 
-class Contact
+class Contact < ActiveRecord::Base
 
   attr_reader :id
   attr_accessor :name, :email

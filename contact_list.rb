@@ -5,7 +5,7 @@ puts PG.inspect
 
 
 # Interfaces between a user and their contact list. Reads from and writes to standard I/O.
-class ContactList
+class ContactList < ActiveRecord::Base
 
   # TODO: Implement user interaction. This should be the only file where you use `puts` and `gets`.
   puts "Here is a list of available commands:"
