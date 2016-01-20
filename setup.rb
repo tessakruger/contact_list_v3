@@ -1,7 +1,7 @@
-require 'pry' # in case you want to use binding.pry
+require 'pry'
 require 'active_record'
-require_relative 'lib/store'
-require_relative 'lib/employee'
+# require_relative 'contact_list'
+require_relative 'lib/contact'
 
 # Output messages from Active Record to standard out
 ActiveRecord::Base.logger = Logger.new(STDOUT)
@@ -9,7 +9,7 @@ ActiveRecord::Base.logger = Logger.new(STDOUT)
 puts 'Establishing connection to database ...'
 ActiveRecord::Base.establish_connection(
   adapter: 'postgresql',
-  database: 'ar_exercises',
+  database: 'contact_list',
   username: 'development',
   password: 'development',
   host: 'localhost',

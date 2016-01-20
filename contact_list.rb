@@ -1,5 +1,5 @@
 require 'pg'
-require_relative 'contact_2'
+require_relative 'contact'
 
 puts PG.inspect
 
