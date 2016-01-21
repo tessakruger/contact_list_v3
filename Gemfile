@@ -4,3 +4,4 @@ source "https://rubygems.org"
 gem 'pry' # for debugging
 gem 'pg'
 gem 'activerecord'
+gem 'rake'

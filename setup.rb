@@ -1,7 +1,9 @@
 require 'pry'
 require 'active_record'
-# require_relative 'contact_list'
-require_relative 'lib/contact'
+require_relative 'lib/contacts'
+require_relative 'commands/commands'
+require 'rake'
+require_relative 'rakefile'
 
 # Output messages from Active Record to standard out
 ActiveRecord::Base.logger = Logger.new(STDOUT)
@@ -23,22 +25,34 @@ puts 'CONNECTED'
 puts 'Setting up Database (recreating tables) ...'
 
 ActiveRecord::Schema.define do
-  drop_table :stores if ActiveRecord::Base.connection.table_exists?(:stores)
-  drop_table :employees if ActiveRecord::Base.connection.table_exists?(:employees)
-  create_table :stores do |t|
-    t.column :name, :string
-    t.column :annual_revenue, :integer
-    t.column :mens_apparel, :boolean
-    t.column :womens_apparel, :boolean
-    t.timestamps null: false
-  end
-  create_table :employees do |table|
-    table.references :store
+  drop_table :contacts if ActiveRecord::Base.connection.table_exists?(:contacts)
+  drop_table :phone_number if ActiveRecord::Base.connection.table_exists?(:phone_number)
+  create_table :contacts do |table|
     table.column :first_name, :string
     table.column :last_name, :string
-    table.column :hourly_rate, :integer
+    table.column :email, :string
     table.timestamps null: false
+  end
+  create_table :phone_number do |phone|
+    phone.references :contacts
+    phone.column :phone, :integer
+    phone.timestamps null: false
   end
 end
 
 puts 'Setup DONE'
+
+def populate
+  require 'faker'
+
+  10.times do
+    Contacts.create!(
+      first_name: Faker::Name.first_name,
+      last_name: Faker::Name.last_name,
+      email: Faker::Internet.email
+    )
+  end
+end
+
+# rake
+populate

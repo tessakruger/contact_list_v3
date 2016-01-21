@@ -29,6 +29,7 @@ GEM
       coderay (~> 1.0)
       method_source (~> 0.8)
       slop (~> 3.4)
+    rake (10.4.2)
     slop (3.4.7)
     thread_safe (0.2.0)
       atomic (>= 1.1.7, < 2)
@@ -41,3 +42,7 @@ DEPENDENCIES
   activerecord
   pg
   pry
+  rake
+
+BUNDLED WITH
+   1.11.2
