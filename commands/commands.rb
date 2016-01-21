@@ -1,5 +1,4 @@
 require_relative '../setup'
-require 'csv'
 
 def commands(answer)
   case answer

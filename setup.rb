@@ -2,8 +2,6 @@ require 'pry'
 require 'active_record'
 require_relative 'lib/contacts'
 require_relative 'commands/commands'
-require 'rake'
-require_relative 'rakefile'
 
 # Output messages from Active Record to standard out
 ActiveRecord::Base.logger = Logger.new(STDOUT)
@@ -54,5 +52,4 @@ def populate
   end
 end
 
-# rake
 populate
